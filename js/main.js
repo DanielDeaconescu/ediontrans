@@ -3,366 +3,356 @@
  *
  * ------------------------------------------------------------------- */
 
-(function($) {
+(function ($) {
+  "use strict";
 
-    "use strict";
-    
-    const cfg = {
-                scrollDuration : 800, // smoothscroll duration
-                mailChimpURL   : ''   // mailchimp url
-                };
+  const cfg = {
+    scrollDuration: 800, // smoothscroll duration
+    mailChimpURL: "", // mailchimp url
+  };
 
-    // Add the User Agent to the <html>
-    // will be used for IE10/IE11 detection (Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0; rv:11.0))
-    // const doc = document.documentElement;
-    // doc.setAttribute('data-useragent', navigator.userAgent);
+  // Add the User Agent to the <html>
+  // will be used for IE10/IE11 detection (Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0; rv:11.0))
+  // const doc = document.documentElement;
+  // doc.setAttribute('data-useragent', navigator.userAgent);
 
+  /* preloader
+   * -------------------------------------------------- */
+  const ssPreloader = function () {
+    const preloader = document.querySelector("#preloader");
 
-   /* preloader
-    * -------------------------------------------------- */
-    const ssPreloader = function() {
+    if (!preloader) return;
 
-        const preloader = document.querySelector('#preloader');
+    document.querySelector("html").classList.add("ss-preload");
 
-        if (!preloader) return;
+    window.addEventListener("load", function () {
+      document.querySelector("html").classList.remove("ss-preload");
+      document.querySelector("html").classList.add("ss-loaded");
 
-        document.querySelector('html').classList.add('ss-preload');
-        
-        window.addEventListener('load', function() {
-               
-            document.querySelector('html').classList.remove('ss-preload');
-            document.querySelector('html').classList.add('ss-loaded');
+      preloader.addEventListener("transitionend", function (e) {
+        if (e.target.matches("#preloader")) {
+          this.style.display = "none";
+        }
+      });
+    });
 
-            preloader.addEventListener('transitionend', function(e) {
-                if (e.target.matches("#preloader")) {
-                    this.style.display = 'none';
-                }
-            });
-        });
+    // force page scroll position to top at page refresh
+    window.addEventListener("beforeunload", function () {
+      window.scrollTo(0, 0);
+    });
+  };
 
-        // force page scroll position to top at page refresh
-        window.addEventListener('beforeunload' , function () {
-            window.scrollTo(0, 0);
-        });
-    };
+  /* move header
+   * -------------------------------------------------- */
+  const ssMoveHeader = function () {
+    const hdr = document.querySelector(".s-header");
+    const hero = document.querySelector("#home");
+    let triggerHeight;
 
+    if (!(hdr && hero)) return;
 
+    setTimeout(function () {
+      triggerHeight = hero.offsetHeight - 170;
+    }, 300);
 
-   /* move header
-    * -------------------------------------------------- */
-    const ssMoveHeader = function () {
+    window.addEventListener("scroll", function () {
+      let loc = window.scrollY;
 
-        const hdr = document.querySelector('.s-header');
-        const hero = document.querySelector('#home');
-        let triggerHeight;
+      if (loc > triggerHeight) {
+        hdr.classList.add("sticky");
+      } else {
+        hdr.classList.remove("sticky");
+      }
 
-        if (!(hdr && hero)) return;
+      if (loc > triggerHeight + 20) {
+        hdr.classList.add("offset");
+      } else {
+        hdr.classList.remove("offset");
+      }
 
-        setTimeout(function(){
-            triggerHeight = hero.offsetHeight - 170;
-        }, 300);
+      if (loc > triggerHeight + 150) {
+        hdr.classList.add("scrolling");
+      } else {
+        hdr.classList.remove("scrolling");
+      }
+    });
+  };
 
-        window.addEventListener('scroll', function () {
+  /* Mobile Menu
+   * ---------------------------------------------------- */
+  const ssMobileMenu = function () {
+    const $toggleButton = $(".s-header__menu-toggle");
+    const $nav = $(".s-header__nav");
 
-            let loc = window.scrollY;
+    $toggleButton.on("click", function (event) {
+      event.preventDefault();
+      $toggleButton.toggleClass("is-clicked");
+      $nav.slideToggle();
+    });
 
-            if (loc > triggerHeight) {
-                hdr.classList.add('sticky');
-            } else {
-                hdr.classList.remove('sticky');
-            }
+    // add mobile class
+    if ($toggleButton.is(":visible")) $nav.addClass("mobile");
 
-            if (loc > triggerHeight + 20) {
-                hdr.classList.add('offset');
-            } else {
-                hdr.classList.remove('offset');
-            }
+    $(window).resize(function () {
+      if ($toggleButton.is(":visible")) $nav.addClass("mobile");
+      else $nav.removeClass("mobile");
+    });
 
-            if (loc > triggerHeight + 150) {
-                hdr.classList.add('scrolling');
-            } else {
-                hdr.classList.remove('scrolling');
-            }
+    $(".s-header__nav ul")
+      .find("a")
+      .on("click", function () {
+        if ($nav.hasClass("mobile")) {
+          $toggleButton.trigger("click");
+        }
+      });
+  };
 
-        });
-    };
+  /* search
+   * ------------------------------------------------------ */
+  const ssSearch = function () {
+    const searchWrap = document.querySelector(".s-header__search");
+    const searchTrigger = document.querySelector(".s-header__search-trigger");
 
+    if (!(searchWrap && searchTrigger)) return;
 
+    const searchField = searchWrap.querySelector(".search-field");
+    const closeSearch = searchWrap.querySelector(".s-header__overlay-close");
+    const siteBody = document.querySelector("body");
 
-   /* Mobile Menu
-    * ---------------------------------------------------- */ 
-    const ssMobileMenu = function() {
+    searchTrigger.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
 
-        const $toggleButton = $('.s-header__menu-toggle');
-        const $nav = $('.s-header__nav');
+      siteBody.classList.add("search-is-visible");
+      setTimeout(function () {
+        searchWrap.querySelector(".search-field").focus();
+      }, 100);
+    });
 
+    closeSearch.addEventListener("click", function (e) {
+      e.stopPropagation();
 
-        $toggleButton.on('click', function(event){
-            event.preventDefault();
-            $toggleButton.toggleClass('is-clicked');
-            $nav.slideToggle();
-        });
+      if (siteBody.classList.contains("search-is-visible")) {
+        siteBody.classList.remove("search-is-visible");
+        setTimeout(function () {
+          searchWrap.querySelector(".search-field").blur();
+        }, 100);
+      }
+    });
 
-        // add mobile class
-        if ($toggleButton.is(':visible')) $nav.addClass('mobile');
+    searchWrap.addEventListener("click", function (e) {
+      if (!e.target.matches(".search-field")) {
+        closeSearch.dispatchEvent(new Event("click"));
+      }
+    });
 
-        $(window).resize(function() {
-            if ($toggleButton.is(':visible')) $nav.addClass('mobile');
-            else $nav.removeClass('mobile');
-        });
+    searchField.addEventListener("click", function (e) {
+      e.stopPropagation();
+    });
 
-        $('.s-header__nav ul').find('a').on("click", function() {
-            if ($nav.hasClass('mobile')) {
-                $toggleButton.trigger('click');
-            }
-        });
-    }; 
+    searchField.setAttribute("placeholder", "Type Keywords");
+    searchField.setAttribute("autocomplete", "off");
+  };
 
+  /* Highlight the current section in the navigation bar
+   * ------------------------------------------------------ */
+  // const ssWaypoints = function () {
+  //   const $sections = $(".target-section");
+  //   const $navigationLinks = $(".s-header__nav li a");
 
-   /* search
-    * ------------------------------------------------------ */
-    const ssSearch = function() {
+  // $sections.waypoint({
+  //   handler: function (direction) {
+  //     let $activeSection;
 
-        const searchWrap = document.querySelector('.s-header__search');
-        const searchTrigger = document.querySelector('.s-header__search-trigger');
+  //     $activeSection = $("section#" + this.element.id);
 
-        if (!(searchWrap && searchTrigger)) return;
+  //     if (direction === "up")
+  //       $activeSection = $activeSection.prevAll(".target-section").first();
 
-        const searchField = searchWrap.querySelector('.search-field');
-        const closeSearch = searchWrap.querySelector('.s-header__overlay-close');
-        const siteBody = document.querySelector('body');
+  //     let $activeLink = $(
+  //       '.s-header__nav li a[href="#' + $activeSection.attr("id") + '"]'
+  //     );
 
-        searchTrigger.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
+  //     $navigationLinks.parent().removeClass("current");
+  //     $activeLink.parent().addClass("current");
+  //   },
 
-            siteBody.classList.add('search-is-visible');
-            setTimeout(function(){
-                searchWrap.querySelector('.search-field').focus();
-            }, 100);
-        });
+  //   offset: "25%",
+  // });
+  // };
 
-        closeSearch.addEventListener('click', function(e) {
-            e.stopPropagation();
+  /* Slick Slider
+   * ------------------------------------------------------ */
+  const ssSlickSlider = function () {
+    // Home Slider
+    // ----------------------------
+    function ssRunHomeSlider() {
+      const $heroSlider = $(".s-home__slider");
 
-            if(siteBody.classList.contains('search-is-visible')) {
-                siteBody.classList.remove('search-is-visible');
-                setTimeout(function(){
-                    searchWrap.querySelector('.search-field').blur();
-                }, 100);
-            }
-        });
+      $heroSlider.slick({
+        arrows: false,
+        dots: false,
+        speed: 1000,
+        fade: true,
+        cssEase: "linear",
+        autoplay: false,
+        autoplaySpeed: 5000,
+        pauseOnHover: false,
+      });
 
-        searchWrap.addEventListener('click', function(e) {
-            if( !(e.target.matches('.search-field')) ) {
-                closeSearch.dispatchEvent(new Event('click'));
-            }
-        });
+      $(".s-home__arrow-prev").on("click", function () {
+        $heroSlider.slick("slickPrev");
+      });
 
-        searchField.addEventListener('click', function(e) {
-            e.stopPropagation();
-        })
+      $(".s-home__arrow-next").on("click", function () {
+        $heroSlider.slick("slickNext");
+      });
+    } // end ssRunHomeSlider
 
-        searchField.setAttribute('placeholder', 'Type Keywords');
-        searchField.setAttribute('autocomplete', 'off');
-    };
+    function ssRunTestimonialSlider() {
+      const $testimonialSlider = $(".testimonial-slider");
 
-
-
-   /* Highlight the current section in the navigation bar
-    * ------------------------------------------------------ */
-    const ssWaypoints = function() {
-
-        const $sections = $(".target-section");
-        const $navigationLinks = $(".s-header__nav li a");
-
-        $sections.waypoint( {
-
-            handler: function(direction) {
-
-                let $activeSection;
-
-                $activeSection = $('section#' + this.element.id);
-
-                if (direction === "up") $activeSection = $activeSection.prevAll(".target-section").first();
-
-                let $activeLink = $('.s-header__nav li a[href="#' + $activeSection.attr("id") + '"]');
-
-                $navigationLinks.parent().removeClass("current");
-                $activeLink.parent().addClass("current");
-
+      $testimonialSlider.slick({
+        arrows: false,
+        dots: true,
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        pauseOnFocus: false,
+        autoplaySpeed: 1500,
+        responsive: [
+          {
+            breakpoint: 1080,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
             },
+          },
+          {
+            breakpoint: 800,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+            },
+          },
+        ],
+      });
+    } // end ssRunTestimonialSlider
 
-            offset: '25%'
+    ssRunHomeSlider();
+    ssRunTestimonialSlider();
+  };
 
-        });
-    };
+  /* animate on scroll
+   * ------------------------------------------------------ */
+  const ssAOS = function () {
+    AOS.init({
+      offset: 100,
+      duration: 600,
+      easing: "ease-in-out",
+      delay: 300,
+      once: true,
+      disable: "mobile",
+    });
+  };
 
+  /* alert boxes
+   * ------------------------------------------------------ */
+  const ssAlertBoxes = function () {
+    const boxes = document.querySelectorAll(".alert-box");
 
+    boxes.forEach(function (box) {
+      box.addEventListener("click", function (e) {
+        if (e.target.matches(".alert-box__close")) {
+          e.stopPropagation();
+          e.target.parentElement.classList.add("hideit");
 
-   /* Slick Slider
-    * ------------------------------------------------------ */
-    const ssSlickSlider = function() {
+          setTimeout(function () {
+            box.style.display = "none";
+          }, 500);
+        }
+      });
+    });
+  };
 
-        // Home Slider
-        // ----------------------------
-        function ssRunHomeSlider() {
-            const $heroSlider = $('.s-home__slider');
+  /* smooth scrolling
+   * ------------------------------------------------------ */
+  // const ssSmoothScroll = function () {
+  //   $(".smoothscroll").on("click", function (e) {
+  //     const target = this.hash;
+  //     const $target = $(target);
 
-            $heroSlider.slick({
-                arrows: false,
-                dots: false,
-                speed: 1000,
-                fade: true,
-                cssEase: 'linear',
-                autoplay: false,
-                autoplaySpeed: 5000,
-                pauseOnHover: false
-            });
+  //     // e.preventDefault();
+  //     e.stopPropagation();
 
-            $('.s-home__arrow-prev').on('click', function() {
-                $heroSlider.slick('slickPrev');
-            });
-    
-            $('.s-home__arrow-next').on('click', function() {
-                $heroSlider.slick('slickNext');
-            });
+  //     $("html, body")
+  //       .stop()
+  //       .animate(
+  //         {
+  //           scrollTop: $target.offset().top,
+  //         },
+  //         cfg.scrollDuration,
+  //         "swing"
+  //       )
+  //       .promise()
+  //       .done(function () {
+  //         window.location.hash = target;
+  //       });
+  //   });
+  // };
 
-        } // end ssRunHomeSlider
+  /* back to top
+   * ------------------------------------------------------ */
+  const ssBackToTop = function () {
+    const pxShow = 800;
+    const goTopButton = document.querySelector(".ss-go-top");
 
-        function ssRunTestimonialSlider() {
-            const $testimonialSlider = $('.testimonial-slider');
-                            
-            $testimonialSlider.slick({
-                arrows: false,
-                dots: true,
-                infinite: true,
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                pauseOnFocus: false,
-                autoplaySpeed: 1500,
-                responsive: [
-                    {
-                        breakpoint: 1080,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 1
-                        }
-                    },
-                    {
-                        breakpoint: 800,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1
-                        }
-                    }
-                ]
-            });
-        } // end ssRunTestimonialSlider
+    if (!goTopButton) return;
 
-        ssRunHomeSlider();
-        ssRunTestimonialSlider();
-    };
+    // Show or hide the button
+    if (window.scrollY >= pxShow) goTopButton.classList.add("link-is-visible");
 
+    window.addEventListener("scroll", function () {
+      if (window.scrollY >= pxShow) {
+        if (!goTopButton.classList.contains("link-is-visible"))
+          goTopButton.classList.add("link-is-visible");
+      } else {
+        goTopButton.classList.remove("link-is-visible");
+      }
+    });
+  };
 
-
-   /* animate on scroll
-    * ------------------------------------------------------ */
-    const ssAOS = function() {
-        
-        AOS.init( {
-            offset: 100,
-            duration: 600,
-            easing: 'ease-in-out',
-            delay: 300,
-            once: true,
-            disable: 'mobile'
-        });
-
-    };
-
-
-
-   /* alert boxes
-    * ------------------------------------------------------ */
-    const ssAlertBoxes = function() {
-
-        const boxes = document.querySelectorAll('.alert-box');
-
-        boxes.forEach(function(box) {
-
-            box.addEventListener('click', function(e){
-                if (e.target.matches(".alert-box__close")) {
-                    e.stopPropagation();
-                    e.target.parentElement.classList.add("hideit");
-
-                    setTimeout(function() {
-                        box.style.display = "none";
-                    }, 500)
-                }    
-            });
-
-        })
-    };
-
-
-   /* smooth scrolling
-    * ------------------------------------------------------ */
-    const ssSmoothScroll = function() {
-        
-        $('.smoothscroll').on('click', function (e) {
-            const target = this.hash;
-            const $target = $(target);
-            
-            e.preventDefault();
-            e.stopPropagation();
-
-            $('html, body').stop().animate({
-                'scrollTop': $target.offset().top
-            }, cfg.scrollDuration, 'swing').promise().done(function () {
-                window.location.hash = target;
-            });
-        });
-    };
-
-
-   /* back to top
-    * ------------------------------------------------------ */
-    const ssBackToTop = function() {
-
-        const pxShow = 800;
-        const goTopButton = document.querySelector(".ss-go-top");
-
-        if (!goTopButton) return;
-
-        // Show or hide the button
-        if (window.scrollY >= pxShow) goTopButton.classList.add("link-is-visible");
-
-        window.addEventListener('scroll', function() {
-            if (window.scrollY >= pxShow) {
-                if(!goTopButton.classList.contains('link-is-visible')) goTopButton.classList.add("link-is-visible")
-            } else {
-                goTopButton.classList.remove("link-is-visible")
-            }
-        });
-    };
-
-
-   /* initialize
-    * ------------------------------------------------------ */
-    (function ssInit() {
-
-        ssPreloader();
-        ssMoveHeader();
-        ssMobileMenu();
-        ssSearch();
-        ssWaypoints();
-        ssSlickSlider();
-        ssAOS();
-        ssAlertBoxes();
-        ssSmoothScroll();
-        ssBackToTop();
-
-    })();
-
+  /* initialize
+   * ------------------------------------------------------ */
+  (function ssInit() {
+    ssPreloader();
+    ssMoveHeader();
+    ssMobileMenu();
+    ssSearch();
+    ssSlickSlider();
+    ssAOS();
+    ssAlertBoxes();
+    ssBackToTop();
+  })();
 })(jQuery);
+
+// Initialize the Map
+// This example adds a marker to indicate the position of Bondi Beach in Sydney,
+// Australia.
+function initMap() {
+  const map = new google.maps.Map(document.querySelector(".map"), {
+    zoom: 14,
+    center: { lat: 45.4418505, lng: 28.0186163 },
+  });
+  const image = "./images/map-marker-alt-solid.svg";
+  const myMarker = new google.maps.Marker({
+    position: { lat: 45.4418505, lng: 28.0186163 },
+    map,
+    icon: {
+      url: image,
+      scaledSize: new google.maps.Size(20, 20),
+    },
+  });
+}
+
+// window.initMap = initMap;

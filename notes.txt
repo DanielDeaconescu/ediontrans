@@ -1,0 +1,31 @@
+What actions should users be able to take on the website?
+
+- contact form (maybe with booking)
+- whatsapp
+- send an email directly
+- be able to call directly
+- maybe be able to chat live
+
+to do: 
+1. de pus diacritice peste tot (done)
+2. de scos imaginile 1 si 4 din galeria foto (fixed)
+3. de creat formularul folosind un bootstrap modal
+4. functionalitatea pentru formular
+5. buton pentru whatsapp
+6. de creat o pagina separata pentru "despre noi" & "servicii" si "contact"
+7. de creat stelele din .s-blog + change the name of the CSS class
+
+
+Google Maps API key: AIzaSyAmhyZ8_18HjO1mVJa911yekUREmZYM2Qs
+script: <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+
+latitude: 45.4418505
+longitude: 28.0186163
+
+Servicii: 
+
+1. Transporturi internationale
+2. Transport aeroport
+3. Inchirieri autocare
+4. Transport colete
+5. Transport local persoane

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>EdionTrans</title>
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- CSS
+            ================================================== -->
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- lightbox CSS -->
+    <link rel="stylesheet" href="css/lightbox.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <!-- what is this vendor.css? -->
+    <link rel="stylesheet" href="css/vendor.css" />
+
+    <!-- script
+            ================================================== -->
+    <!-- what is this modernizr? -->
+    <script src="js/modernizr.js"></script>
+    <script defer src="js/fontawesome/all.min.js"></script>
+
+    <!-- bootstrap JS -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <!-- lightbox JS -->
+    <script src="js/lightbox-plus-jquery.min.js"></script>
+    <!-- favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="manifest" href="site.webmanifest" />
+  </head>
+  <body>
+    <div id="preloader">
+      <div id="loader"></div>
+    </div>
+
+    <header class="s-header">
+      <div class="row">
+        <div class="s-header__logo">
+          <a href="index.html">EdionTrans</a>
+        </div>
+
+        <nav class="s-header__nav">
+          <ul>
+            <li>
+              <a class="smoothscroll" href="index.html">Acasă</a>
+            </li>
+            <li>
+              <a class="smoothscroll" href="about.html">Despre noi</a>
+            </li>
+            <li>
+              <a class="smoothscroll" href="services.html">Servicii</a>
+            </li>
+            <li class="current">
+              <a class="smoothscroll" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </nav>
+
+        <a class="s-header__menu-toggle" href="#0" title="Menu">
+          <span class="s-header__menu-icon"></span>
+        </a>
+      </div>
+    </header>
+
+    <!-- hero -->
+    <section
+      id="home"
+      class="s-home target-section"
+      data-parallax="scroll"
+      data-image-src="images/contact_hero.jpg"
+      data-natural-width="3000"
+      data-natural-height="2000"
+    >
+      <div class="s-home__content">
+        <div class="s-home__slider">
+          <div class="s-home__slide s-home__slide--1">
+            <div class="row">
+              <div class="column large-12 s-home__slide-text">
+                <h2>
+                  Contactează echipa EdionTrans
+                  <span>Suntem aici pentru a te ajuta!</span>
+                </h2>
+                <div>
+                  <div class="contact-info">
+                    Pentru confortul tău, îți punem la dispoziție multiple
+                    modalități prin care poți lua legătura cu echipa EdionTrans.
+                    Alege-o pe cea care ți se potrivește din lista de mai jos.
+                  </div>
+                  <div class="contact-methods">
+                    <a href="https://api.whatsapp.com/send?phone=0040741580359">
+                      <div class="contact-item">
+                        <i class="fab fa-whatsapp-square fa-2x"></i>
+                      </div>
+                      <div class="contact-name">WhatsApp</div>
+                    </a>
+                    <a href="skype:live:.cid.6a374ccc580ae718?chat">
+                      <div class="contact-item">
+                        <i class="fab fa-skype fa-2x"></i>
+                      </div>
+                      <div class="contact-name">Skype</div>
+                    </a>
+                    <a
+                      type="button"
+                      data-bs-toggle="modal"
+                      data-bs-target="#contactForm"
+                      href="#"
+                    >
+                      <div class="contact-item">
+                        <i class="fas fa-comment-alt fa-2x"></i>
+                      </div>
+                      <div class="contact-name">Formular</div>
+                    </a>
+                    <a href="#">
+                      <div class="contact-item">
+                        <i class="fas fa-comment-dots fa-2x"></i>
+                      </div>
+                      <div class="contact-name">Chat live</div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form -->
+    <div
+      class="modal fade"
+      id="contactForm"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title modal-title-custom" id="exampleModalLabel">
+              Formular Contact EdionTrans
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <!-- The form will go here -->
+            <form action="form_process.php" method="POST">
+              <div class="mb-4">
+                <label for="full-name" class="form-label">Nume complet</label>
+                <input
+                  type="text"
+                  class="form-control text-dark input-custom"
+                  name="full-name"
+                />
+              </div>
+              <div class="mb-4">
+                <label for="email" class="form-label"
+                  >Adresă email (opțional)</label
+                >
+                <input
+                  type="email"
+                  class="form-control text-dark input-custom"
+                  name="email"
+                />
+              </div>
+              <div class="mb-4">
+                <label for="phone" class="form-label">Număr de telefon</label>
+                <input
+                  type="tel"
+                  class="form-control text-dark input-custom"
+                  name="phone"
+                />
+              </div>
+              <div class="mb-4">
+                <label for="booking" class="form-label"
+                  >Programare vizită magazin (opțional)</label
+                >
+                <input
+                  type="date"
+                  class="form-control text-dark input-custom"
+                  name="booking"
+                />
+              </div>
+              <div class="mb-4">
+                <label for="booking-time" class="form-label"
+                  >Alegeți ora (opțional)</label
+                >
+                <input
+                  type="time"
+                  class="form-control text-dark input-custom"
+                  name="booking-time"
+                  min="09:00"
+                  max="18:00"
+                />
+              </div>
+              <div class="mb-4">
+                <label for="message" class="form-label"
+                  >Mesajul dumneavoastră</label
+                >
+                <textarea
+                  name="message"
+                  id="message"
+                  class="form-control"
+                  rows="5"
+                  name="message"
+                ></textarea>
+              </div>
+              <div class="mb-4 d-flex justify-content-center gap-4">
+                <div>
+                  <input type="submit" value="Trimite" />
+                </div>
+                <div>
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Anulează
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="contact-info-map-section">
+      <div class="container">
+        <h5 class="text-center mb-5">Alte informații de contact</h5>
+        <div class="row">
+          <div class="col-md-4 mb-4 address-phone-container">
+            <div class="contact-info d-flex flex-column gap-5">
+              <div class="address">
+                <a
+                  target="_blank"
+                  href="https://maps.app.goo.gl/BQtEZH7QuGcoWuwG6"
+                >
+                  <i class="fas fa-map-marker-alt"></i>
+                  Strada 1 Decembrie 1918, bloc S5b,ap51, Galați 800552
+                </a>
+              </div>
+              <div class="phone-numbers">
+                <div>
+                  <a href="tel:+40745450393">
+                    <i class="fas fa-phone"></i>
+                    +40 745 450 393 (Edi)
+                  </a>
+                </div>
+
+                <div>
+                  <a href="tel:+40741580359">
+                    <i class="fas fa-phone"></i>
+                    +40 741 580 359
+                  </a>
+                </div>
+
+                <div>
+                  <a href="tel:+40723688329">
+                    <i class="fas fa-phone"></i>
+                    +40 723 688 329 (Sandu)
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 map-container">
+            <div class="map"></div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-md-12 street-view">
+            <h5 class="m-0">Showroom - Vedere stradală</h5>
+            <p class="m-0">Cum ajungeți la noi</p>
+            <a
+              href="./images/outside_entrance.jpg"
+              data-lightbox="image-entrance"
+              data-title="EdionTrans Vedere stradală"
+            >
+              <img src="./images/outside_entrance.jpg" alt="intrare stradala" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="s-footer">
+      <div class="row">
+        <div
+          class="column large-4 medium-6 w-1000-stack s-footer__social-block"
+        >
+          <ul class="s-footer__social">
+            <li>
+              <a href="#0"
+                ><i class="fab fa-facebook-f" aria-hidden="true"></i
+              ></a>
+            </li>
+            <li>
+              <a href="#0"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+            </li>
+            <li>
+              <a href="#0"
+                ><i class="fab fa-instagram" aria-hidden="true"></i
+              ></a>
+            </li>
+            <li>
+              <a href="#0"
+                ><i class="fab fa-dribbble" aria-hidden="true"></i
+              ></a>
+            </li>
+            <li>
+              <a href="#0"
+                ><i class="fab fa-linkedin-in" aria-hidden="true"></i
+              ></a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="column large-7 medium-6 w-1000-stack ss-copyright">
+          <span>Creat de <a href="#">DanielDev.</a></span>
+          <span
+            >Design inspirat de
+            <a href="https://www.styleshout.com/">StyleShout.</a></span
+          >
+          <span>Toate drepturile rezervate.</span>
+        </div>
+      </div>
+
+      <div class="ss-go-top">
+        <a class="smoothscroll" title="Back to Top" href="#top">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M6 4h12v2H6zm5 10v6h2v-6h5l-6-6-6 6z" />
+          </svg>
+        </a>
+      </div>
+    </footer>
+
+    <!-- Java Script -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- Google Maps API -->
+    <script
+      async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmhyZ8_18HjO1mVJa911yekUREmZYM2Qs&callback=initMap&v=weekly"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+{
+    "name": "daniel/ediontrans",
+    "description": "ediontrans contact form",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Deconescu"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
+}
