@@ -1640,11 +1640,11 @@ body {
 /* ------------------------------------------------------------------- 
  * ## links
  * ------------------------------------------------------------------- */
-a {
+/* a {
   color: var(--color-1);
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-}
+} */
 
 a:hover,
 a:focus,
@@ -2385,7 +2385,6 @@ select:-webkit-autofill:focus {
  *
  * ------------------------------------------------------------------- */
 .button-custom,
-button,
 input[type="submit"],
 input[type="reset"],
 input[type="button"] {
@@ -3159,7 +3158,7 @@ input::-moz-focus-inner {
   --header-height: 7.2rem;
   z-index: 100;
   width: 100%;
-  background-color: black;
+  background-color: white;
   position: absolute;
   top: 0;
   left: 0;
@@ -3209,6 +3208,8 @@ input::-moz-focus-inner {
  * ## header logo
  * ------------------------------------------------------------------- */
 .s-header__logo {
+  display: flex;
+  align-items: center;
   --logo-width: 106px;
   --logo-height: 20px;
   height: var(--header-height);
@@ -3218,7 +3219,7 @@ input::-moz-focus-inner {
   flex: 1;
 }
 
-.s-header__logo a {
+/* .s-header__logo a {
   display: block;
   height: var(--logo-height);
   padding: 0;
@@ -3230,7 +3231,7 @@ input::-moz-focus-inner {
   transform: translateY(-50%);
   position: absolute;
   top: 50%;
-}
+} */
 
 .s-header__logo a:hover {
   color: var(--color-1);
@@ -3268,12 +3269,12 @@ input::-moz-focus-inner {
   height: var(--header-height);
   line-height: var(--header-height);
   padding: 0 16px;
-  color: rgba(255, 255, 255, 0.6);
+  color: black;
 }
 
 .s-header__nav a:hover,
 .s-header__nav a:focus {
-  color: white;
+  color: black;
 }
 
 .s-header__nav .current a {
@@ -5484,6 +5485,92 @@ body.search-is-visible {
 
 .comment-respond form .btn {
   margin-top: var(--vspace-1);
+}
+
+/* navbar */
+.navbar_logo_link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar_logo {
+  max-width: 50px;
+  flex: 1;
+}
+
+.navbar_text {
+  flex: 1;
+  font-family: "EspumaPro-Bold";
+  font-size: 3rem;
+  color: #1ca17a;
+}
+
+/* side buttons */
+.side-buttons-contact {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  bottom: 20%;
+  right: 0.5rem;
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  z-index: 100;
+}
+
+@font-face {
+  font-family: "EspumaPro-Bold";
+  src: url("../fonts/EspumaPro-Bold.ttf") format("truetype");
+}
+
+.whatsapp-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: white; */
+}
+
+.whatsapp-link {
+  color: #25d366;
+}
+
+.whatsapp-link:hover {
+  color: #25d366;
+}
+
+.whatsapp-link:visited {
+  color: #25d366 !important;
+}
+
+.facebook-messenger-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: white; */
+}
+
+.messenger-link {
+  color: #006aff;
+}
+
+.messenger-link:hover {
+  color: #006aff;
+}
+
+.form-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: white; */
+}
+
+.form-link {
+  color: #ff6b00;
+}
+
+.form-link:hover {
+  color: #ff6b00;
 }
 
 /* Index style */

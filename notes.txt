@@ -9,10 +9,10 @@ What actions should users be able to take on the website?
 to do: 
 1. de pus diacritice peste tot (done)
 2. de scos imaginile 1 si 4 din galeria foto (fixed)
-3. de creat formularul folosind un bootstrap modal
-4. functionalitatea pentru formular
-5. buton pentru whatsapp
-6. de creat o pagina separata pentru "despre noi" & "servicii" si "contact"
+3. de creat formularul folosind un bootstrap modal (done)
+4. functionalitatea pentru formular (done)
+5. buton pentru whatsapp (done)
+6. de creat o pagina separata pentru "despre noi" & "servicii" si "contact" (done)
 7. de creat stelele din .s-blog + change the name of the CSS class
 
 
@@ -22,6 +22,22 @@ script: <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"><
 latitude: 45.4418505
 longitude: 28.0186163
 
+To do creat la 01.11.2024 (dupa discutia din magazin):
+1. Informare pachet gazduire Hosterion
+2. Creare logo Edion Trans + favicon + update pe toate paginile (done)
+3. De creat butoanele "WhatsApp" + "Messenger" + "Formular"
+4. Formular: cursa Italia (trimite email) + curse Franta/Germania (trimita mesaj pe WhatsApp) + "submitted_it.html" + "submitted_de.html"
+5. De creat o pagina de Intrebari Frecvente (accordion)
+6. De scos "transport local persoane" de la servicii
+7. De schimbat numarul de la WhatsApp cu 0758 490 201
+8. De adaugat ca serviciu "Bilete de avion"
+9. De consultat Facebook pentru a intelege clientii + imagini
+10. De centrat paragraful din "hero"
+11. Informare ANPC + Sol Online Lit - de ce este inclusa asta pe site-uri?
+12. De re-creat footer-ul + ANPC + Solutionarea Online a Litigiilor
+13. Informare chat live
+
+
 Servicii: 
 
 1. Transporturi internationale
@@ -29,3 +45,5 @@ Servicii:
 3. Inchirieri autocare
 4. Transport colete
 5. Transport local persoane
+
+Font: Omorphia Bold

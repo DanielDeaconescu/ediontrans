@@ -2,14 +2,13 @@
 <html class="no-js" lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>EdionTrans</title>
+    <title>Edion Trans</title>
     <meta name="description" content="" />
     <meta name="author" content="" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- CSS
-    ================================================== -->
+    <!-- CSS -->
     <!-- bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <!-- lightbox CSS -->
@@ -18,8 +17,7 @@
     <!-- what is this vendor.css? -->
     <link rel="stylesheet" href="css/vendor.css" />
 
-    <!-- script
-    ================================================== -->
+    <!-- script -->
     <!-- what is this modernizr? -->
     <script src="js/modernizr.js"></script>
     <script defer src="js/fontawesome/all.min.js"></script>
@@ -29,26 +27,45 @@
 
     <!-- lightbox JS -->
     <script src="js/lightbox-plus-jquery.min.js"></script>
-    <!-- favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <!-- ediontrans favicons -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./images/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./images/favicon/favicon-16x16.png"
+    />
     <link rel="manifest" href="site.webmanifest" />
   </head>
 
   <body id="top">
-    <!-- preloader
-    ================================================== -->
+    <!-- preloader -->
     <div id="preloader">
       <div id="loader"></div>
     </div>
 
-    <!-- header
-    ================================================== -->
+    <!-- navigation -->
     <header class="s-header">
       <div class="row">
         <div class="s-header__logo">
-          <a href="index.html">EdionTrans</a>
+          <a class="navbar_logo_link" href="index.html">
+            <img
+              class="navbar_logo img-fluid"
+              src="./images/ediontrans_logo_nobg.png"
+              alt=""
+            />
+            <div class="navbar_text">Edion Trans</div>
+          </a>
         </div>
 
         <nav class="s-header__nav">
@@ -66,9 +83,7 @@
           <span class="s-header__menu-icon"></span>
         </a>
       </div>
-      <!-- end row -->
     </header>
-    <!-- end s-header -->
 
     <!-- home -->
     <section
@@ -155,6 +170,7 @@
       <div class="row section-head">
         <div class="column large-3 medium-12" data-aos="fade-up">
           <h2>Galerie foto</h2>
+          <img src="./images/logo2.png" alt="" />
           <p class="desc">Activitatea EdionTrans</p>
         </div>
 
@@ -726,13 +742,31 @@
               </div>
             </div>
           </div>
-          <!-- end row -->
         </div>
-        <!-- end s-contact__info-blocks -->
       </div>
-      <!-- end s-contact__content -->
     </section>
-    <!-- end s-contact -->
+
+    <div class="side-buttons-contact">
+      <div class="whatsapp-button">
+        <a
+          class="side-button-link whatsapp-link"
+          href="https://wa.me/400750419349"
+          target="_blank"
+        >
+          <i class="fab fa-whatsapp-square fa-2x"></i>
+        </a>
+      </div>
+      <div class="facebook-messenger-button">
+        <a class="side-button-link messenger-link" href="#">
+          <i class="fab fa-facebook-messenger fa-2x"></i>
+        </a>
+      </div>
+      <div class="form-button">
+        <a class="side-button-link form-link" href="#">
+          <i class="fas fa-comment-alt fa-2x"></i>
+        </a>
+      </div>
+    </div>
 
     <!-- footer -->
     <footer class="s-footer">
@@ -784,7 +818,6 @@
           </svg>
         </a>
       </div>
-      <!-- end ss-go-top -->
     </footer>
 
     <!-- Java Script -->
