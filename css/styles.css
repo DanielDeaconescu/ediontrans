@@ -5511,7 +5511,7 @@ body.search-is-visible {
   display: flex;
   flex-direction: column;
   position: fixed;
-  bottom: 20%;
+  bottom: 35%;
   right: 0.5rem;
   background-color: white;
   padding: 0.5rem;
