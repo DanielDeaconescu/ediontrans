@@ -25,17 +25,38 @@ longitude: 28.0186163
 To do creat la 01.11.2024 (dupa discutia din magazin):
 1. Informare pachet gazduire Hosterion
 2. Creare logo Edion Trans + favicon + update pe toate paginile (done)
-3. De creat butoanele "WhatsApp" + "Messenger" + "Formular"
-4. Formular: cursa Italia (trimite email) + curse Franta/Germania (trimita mesaj pe WhatsApp) + "submitted_it.html" + "submitted_de.html"
-5. De creat o pagina de Intrebari Frecvente (accordion)
-6. De scos "transport local persoane" de la servicii
-7. De schimbat numarul de la WhatsApp cu 0758 490 201
-8. De adaugat ca serviciu "Bilete de avion"
+3. De creat butoanele "WhatsApp" + "Messenger" + "Formular" (done)
+    3.1 "WhatsApp" --> "Scrie-ne pe WhatsApp" && "Messenger" --> "Scrie-ne pe Facebook" && "Formular" --> "Programeaza-te Online" (done)
+    3.2 Create a small transition effect for each message
+4. Formular: cursa Italia (trimite email) + curse Franta/Germania (trimita mesaj pe WhatsApp) + "submitted_it.html" + "submitted_de.html" --> multi-step form
+    4.1 Fix the problem with closing the form with "Esc" --> maybe we will re-do the whole thing with "new bootstrap.Modal(modalContainer)"
+    4.2 Both forms need to have a "back" button (done)
+    4.3 Make sure that the Italy form sends an email wwith all the information (done)
+    4.4 Make sure the color of the text in the form is black everywhere (done)
+    4.5 Build submitted_italy.html (done)
+    4.6 France-Germany form --> create an "Info" section at the top --> "Pentru finalizarea programarii, va rugam apasati butonul "Trimite" (send icon) in aplicatia de WhatsApp" (done)
+    4.7 make "form-info-attention-paragraph" look good on mobiles (done)
+5. De creat o pagina de Intrebari Frecvente (accordion) (done)
+6. De scos "transport local persoane" de la servicii (done)
+7. De schimbat numarul de la WhatsApp cu 0758 490 201 (done)
+8. De adaugat ca serviciu "Bilete de avion" (done)
 9. De consultat Facebook pentru a intelege clientii + imagini
-10. De centrat paragraful din "hero"
+10. De centrat paragraful din "hero" (done)
 11. Informare ANPC + Sol Online Lit - de ce este inclusa asta pe site-uri?
 12. De re-creat footer-ul + ANPC + Solutionarea Online a Litigiilor
 13. Informare chat live
+14. Make the logo text inline on the phone (done)
+15. Remove the effect of the side buttons on the phone (done)
+16. Make sure the navbar navigation items can be seen on phone (done)
+17. Make sure that the navbar can be closed by clicking outside of it
+    17.1 When opening the navigation on <992px, I want to see each button centered and the active element have the background of var(--color-1)
+18. Testimonials
+    18.1 .desc has to stay in 1 line (done)
+    18.2 use a strong tag for the name of the users (done)
+    18.3 create the stars for "review google" (done)
+    18.4 at the bottom, create 2 buttons: "Vezi mai multe recenzii" (which should display all the reviews - maybe from a json file) and "Lasa/Fa o recenzie"
+    18.5 re-think thi whole "testimonials" section - maybe display everything in here with just JS
+
 
 
 Servicii: 
@@ -46,4 +67,33 @@ Servicii:
 4. Transport colete
 5. Transport local persoane
 
-Font: Omorphia Bold
+Font: EspumaPro-Bold
+
+Initial Display
+- programare traseu Italia
+- programare traseu Franta-Germania
+
+
+1. Formular Italia (trimite pe email)
+-nume
+-numar de telefon
+-punct de plecare (select)
+-punct de sosire
+-data plecarii
+
+2. Formular Franta-Germania (se finalizeaza pe WhatsApp)
+- nume
+- numar de telefon
+- punct de plecare (select)
+- data plecarii
+
+Website pages: 
+1. index (done) (done)
+2. about (done) (done)
+3. services (done) (done)
+4. contact (done) (done)
+5. faq (done) (done)
+
+
+
+

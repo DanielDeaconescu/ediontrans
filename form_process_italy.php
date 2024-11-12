@@ -12,12 +12,11 @@ $mail = new PHPMailer(true);
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $fullName = filter_input(INPUT_POST, 'full-name', FILTER_SANITIZE_STRING);
-    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
+    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
     $phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_STRING);
-    $booking = filter_input(INPUT_POST, 'booking', FILTER_SANITIZE_STRING);
-    $message = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_STRING);
-    $booking_time = filter_input(INPUT_POST, 'booking-time', FILTER_SANITIZE_STRING);
+    $departure_date = filter_input(INPUT_POST, 'departure-date', FILTER_SANITIZE_STRING);
+    $departure_place = filter_input(INPUT_POST, 'departure-place', FILTER_SANITIZE_STRING);
+    $arrival_place = filter_input(INPUT_POST, 'arrival-place', FILTER_SANITIZE_STRING);
 
     try {
         $mail->isSMTP();                                            
@@ -35,34 +34,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         //Content
         $mail->isHTML(true);
-        $mail->Subject = 'EdionTrans - ' . 'Client: ' . $fullName . ' Programare: ' . $booking;
+        $mail->Subject = 'EdionTrans - ' . 'Client: ' . $name . ' Programare: ' . $departure_date;
         $mail->Body    = "
-            <h3>Informatii Client $fullName</h3>
+            <h3>Informatii Client $name</h3>
             <div>
-                <p>Nume: <strong>$fullName</strong></p>
+                <p>Nume: <strong>$name</strong></p>
             </div>
             <div>
                 <p>Număr de telefon: <strong>$phone</strong></p>
             </div>
             <div>
-                <p>Data programării: <strong>$booking</strong></p>
+                <p>Data programării: <strong>$departure_date</strong></p>
             </div>
             <div>
-                <p>Ora programării: <strong>$booking_time</strong></p>
+                <p>Punctul de plecare: <strong>$departure_place</strong></p>
             </div>
             <div>
-                <p>Adresă de email: <strong>$email</strong></p>
+                <p>Punctul de sosire: <strong>$arrival_place</strong></p>
             </div>
-            <div>
-                <p>Mesaj: 
-                <strong>$message</strong></p>
-            </div>
-            
         ";
         // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
     
         $mail->send();
-        header('Location: submitted.html');
+        header('Location: submitted_italy.html');
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }

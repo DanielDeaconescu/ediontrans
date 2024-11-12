@@ -1,0 +1,13 @@
+- name ($name)
+- phone ($phone)
+- departure-date ($departure_date)
+- departure-place ($departure_place)
+- arrival-place ($arrival_place)
+
+
+French-Deutsch form: 
+- name
+- phone
+- departure-date
+- departure-place
+- arrival-place

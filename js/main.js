@@ -355,4 +355,369 @@ function initMap() {
   });
 }
 
+// Side Buttons Effects
+
+const whatsappBtn = document.querySelector(".whatsapp-button");
+const facebookBtn = document.querySelector(".facebook-messenger-button");
+const formBtn = document.querySelector(".form-button");
+
+const sideButtonsContainer = document.querySelector(".side-buttons-contact");
+
+function addHoverEffect() {
+  sideButtonsContainer.addEventListener("mouseover", function (event) {
+    if (window.innerWidth < 1024) return;
+    const hoveredElement = event.target.closest(".button-item");
+    if (hoveredElement) {
+      // message for WhatsApp
+      if (
+        hoveredElement.classList.contains("whatsapp-button") &&
+        !hoveredElement.querySelector(".message-div")
+      ) {
+        const messageDiv = document.createElement("div");
+        messageDiv.innerHTML = "Scrie-ne pe WhatsApp";
+        messageDiv.classList.add("message-div");
+        whatsappBtn.insertAdjacentElement("afterbegin", messageDiv);
+      }
+
+      // message for WhatsApp
+      if (
+        hoveredElement.classList.contains("facebook-messenger-button") &&
+        !hoveredElement.querySelector(".message-div")
+      ) {
+        const messageDiv = document.createElement("div");
+        messageDiv.innerHTML = "Scrie-ne pe Facebook";
+        messageDiv.classList.add("message-div");
+        facebookBtn.insertAdjacentElement("afterbegin", messageDiv);
+      }
+
+      // message for Form
+      if (
+        hoveredElement.classList.contains("form-button") &&
+        !hoveredElement.querySelector(".message-div")
+      ) {
+        const messageDiv = document.createElement("div");
+        messageDiv.innerHTML = "Programeaza-te online";
+        messageDiv.classList.add("message-div");
+        formBtn.insertAdjacentElement("afterbegin", messageDiv);
+      }
+    }
+  });
+
+  sideButtonsContainer.addEventListener("mouseout", function (event) {
+    if (window.innerWidth < 1024) return;
+    const hoveredElement = event.target.closest(".button-item");
+    if (hoveredElement) {
+      // remove message for WhatsApp
+      if (hoveredElement.classList.contains("whatsapp-button")) {
+        const messageDiv = document.querySelector(".message-div");
+        whatsappBtn.removeChild(messageDiv);
+      }
+
+      // remove message for Facebook Messenger
+      if (hoveredElement.classList.contains("facebook-messenger-button")) {
+        const messageDiv = document.querySelector(".message-div");
+        facebookBtn.removeChild(messageDiv);
+      }
+
+      // remove message for Form
+      if (hoveredElement.classList.contains("form-button")) {
+        const messageDiv = document.querySelector(".message-div");
+        formBtn.removeChild(messageDiv);
+      }
+    }
+  });
+}
+
+if (window.innerWidth >= 1024) addHoverEffect();
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth >= 1024) {
+    addHoverEffect();
+  } else {
+    sideButtonsContainer.removeEventListener("mouseover", addHoverEffect);
+    sideButtonsContainer.removeEventListener("mouseout", addHoverEffect);
+  }
+});
+
+// Form Functionality
+const initialDisplayButtons = document.querySelector(
+  ".initial-display-buttons"
+);
+const initialDisplay = document.querySelector(".initial-display");
+
+const formIt = document.querySelector(".container-form-italy");
+const formFrDe = document.querySelector(".container-form-fr-de");
+const actualFormIt = document.getElementById("form_it");
+const actualFormFrDe = document.getElementById("form_fr-de");
+
+initialDisplayButtons.addEventListener("click", function (event) {
+  const clickedBtn = event.target.closest(".btn");
+  if (clickedBtn) {
+    // display Italy form
+    if (clickedBtn.classList.contains("btn-form-it")) {
+      // Hide the initial display
+      initialDisplay.classList.add("display-none");
+      // Make sure the Germany form is not displayed
+      formFrDe.classList.add("display-none");
+      // actually display the Italy form
+      formIt.classList.remove("display-none");
+    }
+    // display France-Germany form
+    if (clickedBtn.classList.contains("btn-form-it-de")) {
+      // Hide the initial display
+      initialDisplay.classList.add("display-none");
+      // Make sure the Italy form is not displayed
+      formIt.classList.add("display-none");
+      // actually display the Germany form
+      formFrDe.classList.remove("display-none");
+    }
+  }
+});
+
+function resetInitialDisplayForm() {
+  // Make sure that both forms are hidden
+  formIt.classList.add("display-none");
+  formFrDe.classList.add("display-none");
+  // display the initial display
+  initialDisplay.classList.remove("display-none");
+  // reset forms
+  actualFormIt.reset();
+  actualFormFrDe.reset();
+}
+
+// show the initial display when the form is closed
+// closing button
+const customCloseBtn = document.querySelector(".custom-close-btn");
+customCloseBtn.addEventListener("click", function () {
+  setTimeout(resetInitialDisplayForm, 200);
+});
+// clicking outside
+const modal = document.querySelector(".modal-dialog");
+const modalContainer = document.querySelector(".modal");
+document.addEventListener("click", function (event) {
+  if (!modal.contains(event.target)) {
+    setTimeout(resetInitialDisplayForm, 200);
+  }
+});
+
+// "Esc" button
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    resetInitialDisplayForm();
+  }
+});
+
+//Functionality for the "back" button inside the form
+const allBackBtnsForm = document.querySelectorAll(".form-back-button");
+allBackBtnsForm.forEach((button) =>
+  button.addEventListener("click", function () {
+    resetInitialDisplayForm();
+  })
+);
+
+// France-Germany Form Functionality
+actualFormFrDe.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const inputName = document.getElementById("name").value;
+  const inputPhone = document.getElementById("phone").value;
+  const inputDepartureDate = document.getElementById(
+    "departure-date-fr-de"
+  ).value;
+  const inputDeparturePlace = document.getElementById(
+    "departure-place-fr-de"
+  ).value;
+  const inputArrivalPlace = document.getElementById(
+    "arrival-place-fr-de"
+  ).value;
+
+  const message = `Informații programare: \n\nNume client: ${inputName} \nNumăr de telefon: ${inputPhone} \nDată de plecare: ${inputDepartureDate} \nLocul plecării: ${inputDeparturePlace} \nLocul sosirii: ${inputArrivalPlace}`;
+
+  const encodedMessage = encodeURIComponent(message);
+
+  const whatsappNumber = "400750419349";
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+  window.open(whatsappLink, "_blank");
+
+  resetInitialDisplayForm();
+});
+
+// Functionality: close the navigation by clivking outside of it
+
+// const navigation = document.querySelector(".s-header");
+// const navigationMenu = document.querySelector(".s-header__nav");
+// const navToggleButton = document.querySelector(".s-header__menu-toggle");
+
+// navToggleButton.addEventListener("click", function () {
+//   navigationMenu.classList.remove("display-none");
+//   navToggleButton.classList.add("is-clicked");
+// });
+
+// document.addEventListener("click", function (e) {
+//   const clickedElement = e.target;
+//   if (!navigation.contains(clickedElement)) {
+//     //".s-header__nav" --> display: none
+//     document.querySelector(".s-header__nav").classList.add("display-none");
+//     //s-header__menu-toggle --> remove ".is-clicked"
+//     document
+//       .querySelector(".s-header__menu-toggle")
+//       .classList.remove("is-clicked");
+//   }
+// });
+
+// FAQ Functionality
+const allArrowElements = document.querySelectorAll(".arrow");
+const allQuestionLinks = document.querySelectorAll(".faq-question");
+allQuestionLinks.forEach((question) =>
+  question.addEventListener("click", function (e) {
+    // Hide all the answers in the beginning
+    document
+      .querySelectorAll(".faq-answer")
+      .forEach((answer) => answer.classList.remove("show"));
+    // Make all "arrows" + in the beginning
+    allArrowElements.forEach((arrow) => (arrow.textContent = "+"));
+
+    // Display only the corresponding answer
+    const questionIndex = Number(
+      e.target.closest(".faq-question").getAttribute("data-index")
+    );
+    const correspondingAnswer = document.querySelector(
+      `.faq-answer[data-index="${questionIndex}"]`
+    );
+    correspondingAnswer.classList.toggle("show");
+
+    // Toggle arrow to "-" for open answer
+    const arrow = document.querySelector(
+      `.arrow[data-index="${questionIndex}"]`
+    );
+    arrow.textContent = correspondingAnswer.classList.contains("show")
+      ? "-"
+      : "+";
+  })
+);
+
 // window.initMap = initMap;
+
+// loading the reviews functionality
+const showMoreReviews = document.querySelector(".show-more-reviews");
+
+// fetching the reviews
+const reviewsContainer = document.querySelector(".blog-entries");
+
+async function fetchReviews() {
+  fetch("data/reviews.json")
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("Could not load reviews");
+      }
+      return res.json();
+    })
+    .then((reviews) => {
+      displayReviews(reviews);
+    })
+    .catch((err) =>
+      console.error("There was a problem during the fetch operation", err)
+    );
+}
+
+function displayReviews(reviews) {
+  reviews.forEach((review) => {
+    // Create the main article element
+    const reviewItem = document.createElement("article");
+    reviewItem.classList.add("blog-entry");
+    reviewItem.setAttribute("data-aos", "fade-up");
+
+    // Create the row container
+    const rowContainer = document.createElement("div");
+    rowContainer.classList.add("row", "blog-entry__header");
+
+    // Create the avatar container
+    const avatarContainer = document.createElement("div");
+    avatarContainer.classList.add("blog-entry__avatar");
+
+    const avatarImg = document.createElement("img");
+    avatarImg.setAttribute("src", "images/testimonials/testimonial4.png"); // Placeholder for avatar image
+    avatarImg.setAttribute("alt", `Avatar ${review.name}`);
+    avatarContainer.appendChild(avatarImg);
+
+    // Create the title container
+    const titleContainer = document.createElement("div");
+    titleContainer.classList.add(
+      "column",
+      "large-9",
+      "w-1000-stack",
+      "blog-entry__title"
+    );
+
+    const reviewTitle = document.createElement("h3");
+    reviewTitle.classList.add("h2");
+
+    const reviewText = document.createElement("span");
+    reviewText.textContent = `"${review.comment}"`;
+
+    reviewTitle.appendChild(reviewText);
+    titleContainer.appendChild(reviewTitle);
+
+    // Create the metadata container
+    const metaContainer = document.createElement("div");
+    metaContainer.classList.add(
+      "column",
+      "large-3",
+      "w-1000-stack",
+      "blog-entry__meta"
+    );
+
+    const bylineUser = document.createElement("span");
+    bylineUser.classList.add("blog-entry__byline");
+    bylineUser.textContent = "Utilizator: ";
+
+    const bylineName = document.createElement("span");
+    bylineName.classList.add("blog-entry__byline");
+
+    const strongName = document.createElement("strong");
+    strongName.textContent = review.name;
+    bylineName.appendChild(strongName);
+
+    const dateContainer = document.createElement("div");
+
+    const dateLabel = document.createElement("span");
+    dateLabel.classList.add("blog-entry__date");
+    dateLabel.textContent = "Review Google: ";
+
+    const ratingContainer = document.createElement("span");
+    ratingContainer.classList.add("google-star-rating");
+
+    // Generate the star rating based on the review's rating
+    for (let i = 0; i < review.rating; i++) {
+      const starIcon = document.createElement("i");
+      starIcon.classList.add("fas", "fa-star", "star-custom");
+      ratingContainer.appendChild(starIcon);
+    }
+
+    // Append elements to meta container
+    metaContainer.appendChild(bylineUser);
+    metaContainer.appendChild(bylineName);
+    dateContainer.appendChild(dateLabel);
+    dateContainer.appendChild(ratingContainer);
+    metaContainer.appendChild(dateContainer);
+
+    // Append everything to row container
+    rowContainer.appendChild(avatarContainer);
+    rowContainer.appendChild(titleContainer);
+    rowContainer.appendChild(metaContainer);
+
+    // Append row container to review item
+    reviewItem.appendChild(rowContainer);
+
+    // reviewsContainer.appendChild(reviewItem);
+    reviewsContainer.insertAdjacentElement("beforeend", reviewItem);
+  });
+}
+
+// displaying the reviews only when clicking on "show-more-reviews"
+
+showMoreReviews.addEventListener("click", function (e) {
+  e.preventDefault();
+  fetchReviews();
+});

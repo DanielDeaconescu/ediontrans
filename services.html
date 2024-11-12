@@ -73,11 +73,12 @@
             <li>
               <a class="smoothscroll" href="index.html">Acasă</a>
             </li>
-            <li>
-              <a class="smoothscroll" href="about.html">Despre noi</a>
-            </li>
+            <li><a class="smoothscroll" href="about.html">Despre noi</a></li>
             <li class="current">
               <a class="smoothscroll" href="services.html">Servicii</a>
+            </li>
+            <li>
+              <a class="smoothscroll" href="faq.html">Întrebări frecvente</a>
             </li>
             <li><a class="smoothscroll" href="contact.html">Contact</a></li>
           </ul>
@@ -187,20 +188,21 @@
             și de respectarea termenelor de livrare stabilite.
           </p>
         </div>
-        <!-- end services-item -->
 
         <div class="column services-item" data-aos="fade-up">
-          <h5>Transport local persoane</h5>
+          <h5>Bilete de Avion</h5>
           <p>
-            Asigurăm transport local de persoane într-un mod sigur și eficient,
-            cu puncte de preluare flexibile, ideale pentru deplasările zilnice
-            sau pentru diverse evenimente. Ne străduim să îți oferim un serviciu
-            confortabil și accesibil, dedicat nevoilor tale de mobilitate
-            locală.
+            Prin parteneriatul nostru cu o firmă de turism de încredere,
+            EdionTrans vă oferă acum și posibilitatea de a achiziționa bilete de
+            avion direct prin intermediul nostru. Deși activitatea principală a
+            companiei noastre rămâne transportul terestru, dorim să vă asigurăm
+            că ne ocupăm de toate detaliile necesare călătoriilor dumneavoastră.
+            Astfel, colaborarea noastră ne permite să vă oferim un serviciu
+            complet și sigur, simplificând procesul de rezervare a biletelor de
+            avion și oferindu-vă o experiență cât mai plăcută.
           </p>
         </div>
       </div>
-      <!-- end services-list -->
     </section>
 
     <!-- photo gallery -->
@@ -447,110 +449,7 @@
       <!-- end modal-06 -->
     </section>
 
-    <div
-      class="modal fade"
-      id="contactForm"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title modal-title-custom" id="exampleModalLabel">
-              Formular Contact EdionTrans
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <!-- The form will go here -->
-            <form action="form_process.php" method="POST">
-              <div class="mb-4">
-                <label for="full-name" class="form-label">Nume complet</label>
-                <input
-                  type="text"
-                  class="form-control text-dark input-custom"
-                  name="full-name"
-                />
-              </div>
-              <div class="mb-4">
-                <label for="email" class="form-label"
-                  >Adresă email (opțional)</label
-                >
-                <input
-                  type="email"
-                  class="form-control text-dark input-custom"
-                  name="email"
-                />
-              </div>
-              <div class="mb-4">
-                <label for="phone" class="form-label">Număr de telefon</label>
-                <input
-                  type="tel"
-                  class="form-control text-dark input-custom"
-                  name="phone"
-                />
-              </div>
-              <div class="mb-4">
-                <label for="booking" class="form-label"
-                  >Programare vizită magazin (opțional)</label
-                >
-                <input
-                  type="date"
-                  class="form-control text-dark input-custom"
-                  name="booking"
-                />
-              </div>
-              <div class="mb-4">
-                <label for="booking-time" class="form-label"
-                  >Alegeți ora (opțional)</label
-                >
-                <input
-                  type="time"
-                  class="form-control text-dark input-custom"
-                  name="booking-time"
-                  min="09:00"
-                  max="18:00"
-                />
-              </div>
-              <div class="mb-4">
-                <label for="message" class="form-label"
-                  >Mesajul dumneavoastră</label
-                >
-                <textarea
-                  name="message"
-                  id="message"
-                  class="form-control"
-                  rows="5"
-                  name="message"
-                ></textarea>
-              </div>
-              <div class="mb-4 d-flex justify-content-center gap-4">
-                <div>
-                  <input type="submit" value="Trimite" />
-                </div>
-                <div>
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                  >
-                    Anulează
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Formular Contact -->
+    <!-- Contact Section -->
     <section class="s-cta ss-dark">
       <div class="row heading-block heading-block--center" data-aos="fade-up">
         <div class="column">
@@ -595,6 +494,336 @@
                 0040 741 580 359 (Edi) <br />
                 0040 723 688 329 (Sandu)
                 <br />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Side Buttons for Contact -->
+    <div class="side-buttons-contact">
+      <div class="button-item whatsapp-button">
+        <a
+          class="side-button-link whatsapp-link"
+          href="https://wa.me/400758490201"
+          target="_blank"
+        >
+          <i class="fab fa-whatsapp-square fa-2x"></i>
+        </a>
+      </div>
+      <div class="button-item facebook-messenger-button">
+        <a
+          class="side-button-link messenger-link"
+          href="https://m.me/edion.edion.391"
+          target="_blank"
+        >
+          <i class="fab fa-facebook-messenger fa-2x"></i>
+        </a>
+      </div>
+      <div class="button-item form-button">
+        <a
+          class="side-button-link form-link"
+          data-bs-toggle="modal"
+          data-bs-target="#contactForm"
+          href=""
+        >
+          <i class="fas fa-comment-alt fa-2x"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Contact Form Modal -->
+    <section class="s-contact">
+      <div
+        class="modal fade"
+        id="contactForm"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title modal-title-custom" id="exampleModalLabel">
+                Formular Contact EdionTrans
+              </h5>
+              <button
+                type="button"
+                class="btn-close custom-close-btn"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <!-- Initial display / first step of the form -->
+              <div class="initial-display">
+                <h5 class="mb-4">Alegeți tipul programării</h5>
+                <div class="initial-display-buttons">
+                  <button class="btn btn-secondary btn-form-it">
+                    Formular traseu Italia
+                  </button>
+                  <button class="btn btn-secondary btn-form-it-de">
+                    Formular traseu Franța-Germania
+                  </button>
+                </div>
+              </div>
+
+              <!-- The form will go here -->
+              <div class="container-form-italy display-none">
+                <div class="form-title pb-4">
+                  <div class="form-title-back">
+                    <button type="button" class="form-back-button">
+                      <i class="fas fa-arrow-circle-left"></i>
+                      Înapoi
+                    </button>
+                  </div>
+                  <div class="form-title-title">
+                    <h5>Programare traseu Italia</h5>
+                  </div>
+                  <div class="form-title-image">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/en/0/03/Flag_of_Italy.svg"
+                      alt="Italian Flag"
+                      width="50"
+                    />
+                  </div>
+                </div>
+                <!-- Contact Form Italy -->
+                <form
+                  id="form_it"
+                  action="form_process_italy.php"
+                  method="POST"
+                >
+                  <div class="mb-4">
+                    <label for="name" class="form-label">Nume: </label>
+                    <input
+                      type="text"
+                      class="form-control text-dark input-custom"
+                      name="name"
+                    />
+                  </div>
+                  <div class="mb-4">
+                    <label for="phone" class="form-label"
+                      >Număr de telefon</label
+                    >
+                    <input
+                      type="tel"
+                      class="form-control text-dark input-custom"
+                      name="phone"
+                    />
+                  </div>
+                  <div class="mb-4">
+                    <label for="departure-date" class="form-label"
+                      >Alege data plecării</label
+                    >
+                    <!-- Change this in order to be able to choose only certain dates -->
+                    <input
+                      type="date"
+                      id="departure-date"
+                      class="form-control"
+                      name="departure-date"
+                    />
+                  </div>
+                  <div class="mb-4">
+                    <label for="departure-place" class="form-label"
+                      >Punctul de plecare</label
+                    >
+                    <select
+                      name="departure-place"
+                      id="departure-place"
+                      class="form-select"
+                    >
+                      <option value="null">Alege punctul de plecare</option>
+                      <option value="Loc plecare 1">Loc plecare 1</option>
+                      <option value="Loc plecare 2">Loc plecare 2</option>
+                      <option value="Loc plecare 3">Loc plecare 3</option>
+                      <option value="Loc plecare 4">Loc plecare 4</option>
+                    </select>
+                  </div>
+                  <div class="mb-4">
+                    <label for="arrival-place" class="form-label"
+                      >Punctul de sosire</label
+                    >
+                    <select
+                      name="arrival-place"
+                      id="arrival-place"
+                      class="form-select"
+                    >
+                      <option value="null">Alege punctul de sosire</option>
+                      <option value="Punct sosire 1">Punct sosire 1</option>
+                      <option value="Punct sosire 2">Punct sosire 2</option>
+                      <option value="Punct sosire 3">Punct sosire 3</option>
+                      <option value="Punct sosire 4">Punct sosire 4</option>
+                    </select>
+                  </div>
+                  <div class="mb-4 d-flex justify-content-center gap-4">
+                    <div class="submit-container">
+                      <button type="submit" class="btn btn-primary">
+                        Trimite
+                      </button>
+                    </div>
+                    <div class="cancel-container">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Anulează
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Container form France-Deutsch -->
+              <div class="container-form-fr-de display-none">
+                <div class="form-title pb-4">
+                  <div class="form-title-back">
+                    <button type="button" class="form-back-button">
+                      <i class="fas fa-arrow-circle-left"></i>
+                      Înapoi
+                    </button>
+                  </div>
+                  <div class="form-title-title">
+                    <h5>Programare traseu Franța-Germania</h5>
+                  </div>
+                  <div class="form-title-image">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg"
+                      alt="French Flag"
+                      width="50"
+                    />
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg"
+                      alt="German Flag"
+                      width="50"
+                    />
+                  </div>
+                </div>
+                <div class="form-info-attention pb-4">
+                  <div class="container">
+                    <p class="form-info-attention-paragraph">
+                      <span class="form-info-attention-highlight">
+                        <i class="fas fa-info-circle"></i>
+                        Atenție!</span
+                      >
+                      <span class="form-info-text">
+                        Pentru a finaliza programarea trebuie să apăsați butonul
+                        de "Trimite" (
+                        <i class="bi bi-send custom-send-icon"></i>
+                        ) în aplicația WhatsApp, astfel încât mesajul să ajungă
+                        la noi.
+                      </span>
+                    </p>
+                  </div>
+                </div>
+
+                <form id="form_fr-de" action="form_process.php" method="POST">
+                  <div class="mb-4">
+                    <label for="name" class="form-label">Nume: </label>
+                    <input
+                      type="text"
+                      class="form-control text-dark input-custom"
+                      name="name"
+                      id="name"
+                    />
+                  </div>
+                  <div class="mb-4">
+                    <label for="phone" class="form-label"
+                      >Număr de telefon</label
+                    >
+                    <input
+                      type="tel"
+                      class="form-control text-dark input-custom"
+                      name="phone"
+                      id="phone"
+                    />
+                  </div>
+
+                  <div class="mb-4">
+                    <label for="departure-date" class="form-label"
+                      >Alege data plecării</label
+                    >
+                    <!-- Change this in order to be able to choose only certain dates -->
+                    <input
+                      type="date"
+                      id="departure-date-fr-de"
+                      name="departure-date"
+                      class="form-control"
+                    />
+                  </div>
+
+                  <div class="mb-4">
+                    <label for="departure-place" class="form-label"
+                      >Punctul de plecare</label
+                    >
+                    <select
+                      name="departure-place"
+                      id="departure-place-fr-de"
+                      class="form-select"
+                    >
+                      <option value="null">Alege punctul de plecare</option>
+                      <option value="Loc plecare 1">Loc plecare 1</option>
+                      <option value="Loc plecare 2">Loc plecare 2</option>
+                      <option value="Loc plecare 3">Loc plecare 3</option>
+                      <option value="Loc plecare 4">Loc plecare 4</option>
+                    </select>
+                  </div>
+                  <div class="mb-4">
+                    <label for="arrival-place" class="form-label"
+                      >Punctul de sosire</label
+                    >
+                    <select
+                      name="arrival-place"
+                      id="arrival-place-fr-de"
+                      class="form-select"
+                    >
+                      <option value="null">Alege punctul de sosire</option>
+                      <option value="Punct sosire 1">Punct sosire 1</option>
+                      <option value="Punct sosire 2">Punct sosire 2</option>
+                      <option value="Punct sosire 3">Punct sosire 3</option>
+                      <option value="Punct sosire 4">Punct sosire 4</option>
+                    </select>
+                  </div>
+                  <div class="mb-4 d-flex justify-content-center gap-4">
+                    <div class="mb-4 d-flex justify-content-center gap-4">
+                      <div class="submit-container">
+                        <button type="submit" class="btn btn-primary">
+                          Trimite
+                        </button>
+                      </div>
+                      <div class="cancel-container">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                        >
+                          Anulează
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="modal-footer modal-footer-custom">
+              <div class="info_it">
+                <!-- Informare traseu Italia -->
+                <i class="fas fa-info-circle"></i>
+                <small
+                  >Traseul Italia se realizează în fiecare săptămână joi cu
+                  plecare la ora 18 din Galați.</small
+                >
+              </div>
+
+              <div class="info_fr">
+                <!-- Informare traseu Franta-Germania -->
+                <i class="fas fa-info-circle"></i>
+                <small
+                  >Traseul Franța-Germania se realizează pentru persoane și
+                  colete.</small
+                >
               </div>
             </div>
           </div>
