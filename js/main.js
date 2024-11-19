@@ -566,59 +566,135 @@ actualFormFrDe.addEventListener("submit", function (e) {
 //   }
 // });
 
+// structure of faq_item:
+{
+  /* <div class="faq-item mb-4">
+          <a type="button" class="faq-question text-dark" data-index="1">
+            <span>Care sunt destinațiile către care oferim transport?</span>
+            <span class="arrow" data-index="1">+</span>
+          </a>
+          <div class="faq-answer" data-index="1">
+            <p class="faq-answer-p">
+              Oferim transport către diferite destinații în Europa, inclusiv
+              Italia și alte destinații solicitate de clienții noștri.
+            </p>
+          </div>
+        </div> */
+}
+const accordionContainer = document.querySelector(".accordion");
+
+accordionContainer.innerHTML = "";
+
+function createQuestionItem(questions) {
+  questions.forEach((question, index) => {
+    // creating the div
+    const div = document.createElement("div");
+    div.classList.add("faq-item", "mb-4");
+    // creating the <a> tag
+    const link = document.createElement("a");
+    link.classList.add("faq-question", "text-dark");
+    link.setAttribute("type", "button");
+    link.setAttribute("data-index", `${index + 1}`);
+
+    // creating span for question
+    const spanQuestion = document.createElement("span");
+    spanQuestion.textContent = question.question;
+    // creating span for sign
+    const spanSign = document.createElement("span");
+    spanSign.classList.add("arrow");
+    spanSign.setAttribute("data-index", `${index + 1}`);
+    spanSign.textContent = "+";
+
+    link.appendChild(spanQuestion);
+    link.appendChild(spanSign);
+
+    // creating the div for the answer
+    const answerDiv = document.createElement("div");
+    answerDiv.classList.add("faq-answer");
+    answerDiv.setAttribute("data-index", `${index + 1}`);
+
+    // creating the paragraph with the actual answer
+    const p = document.createElement("p");
+    p.classList.add("faq-answer-p");
+    p.textContent = question.answer;
+
+    answerDiv.appendChild(p);
+
+    div.appendChild(link);
+    div.appendChild(answerDiv);
+
+    accordionContainer.appendChild(div);
+  });
+}
+
+let allQuestions;
+
+async function fetchQuestions() {
+  try {
+    const result = await fetch("../data/questions.json")
+      .then((res) => res.json())
+      .then((data) => {
+        allQuestions = data;
+        createQuestionItem(allQuestions);
+        console.log(allQuestions);
+        return data;
+      });
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+fetchQuestions();
+
 // FAQ Functionality
-const allArrowElements = document.querySelectorAll(".arrow");
-const allQuestionLinks = document.querySelectorAll(".faq-question");
-allQuestionLinks.forEach((question) =>
-  question.addEventListener("click", function (e) {
-    // Hide all the answers in the beginning
-    document
-      .querySelectorAll(".faq-answer")
-      .forEach((answer) => answer.classList.remove("show"));
-    // Make all "arrows" + in the beginning
-    allArrowElements.forEach((arrow) => (arrow.textContent = "+"));
 
-    // Display only the corresponding answer
-    const questionIndex = Number(
-      e.target.closest(".faq-question").getAttribute("data-index")
-    );
-    const correspondingAnswer = document.querySelector(
-      `.faq-answer[data-index="${questionIndex}"]`
-    );
-    correspondingAnswer.classList.toggle("show");
+setTimeout(function () {
+  const allArrowElements = document.querySelectorAll(".arrow");
+  const allQuestionLinks = document.querySelectorAll(".faq-question");
+  allQuestionLinks.forEach((question) =>
+    question.addEventListener("click", function (e) {
+      // Hide all the answers in the beginning
+      document
+        .querySelectorAll(".faq-answer")
+        .forEach((answer) => answer.classList.remove("show"));
+      // Make all "arrows" + in the beginning
+      allArrowElements.forEach((arrow) => (arrow.textContent = "+"));
 
-    // Toggle arrow to "-" for open answer
-    const arrow = document.querySelector(
-      `.arrow[data-index="${questionIndex}"]`
-    );
-    arrow.textContent = correspondingAnswer.classList.contains("show")
-      ? "-"
-      : "+";
-  })
-);
+      // Display only the corresponding answer
+      const questionIndex = Number(
+        e.target.closest(".faq-question").getAttribute("data-index")
+      );
+      const correspondingAnswer = document.querySelector(
+        `.faq-answer[data-index="${questionIndex}"]`
+      );
+      correspondingAnswer.classList.add("show");
+
+      // Toggle arrow to "-" for open answer
+      const arrow = document.querySelector(
+        `.arrow[data-index="${questionIndex}"]`
+      );
+      arrow.textContent = correspondingAnswer.classList.contains("show")
+        ? "-"
+        : "+";
+    })
+  );
+}, 100);
+
+faqFunctionality();
 
 // window.initMap = initMap;
 
 // loading the reviews functionality
 const showMoreReviews = document.querySelector(".show-more-reviews");
+const testimonialsContainer = document.querySelector(".testimonials-container");
 
-// fetching the reviews
-const reviewsContainer = document.querySelector(".blog-entries");
+let allReviews = [];
+let initialDisplayCount = 3;
+let isShowingAll = false;
 
-async function fetchReviews() {
-  fetch("data/reviews.json")
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error("Could not load reviews");
-      }
-      return res.json();
-    })
-    .then((reviews) => {
-      displayReviews(reviews);
-    })
-    .catch((err) =>
-      console.error("There was a problem during the fetch operation", err)
-    );
+function clearReviews() {
+  testimonialsContainer.innerHTML = "";
 }
 
 function displayReviews(reviews) {
@@ -637,7 +713,7 @@ function displayReviews(reviews) {
     avatarContainer.classList.add("blog-entry__avatar");
 
     const avatarImg = document.createElement("img");
-    avatarImg.setAttribute("src", "images/testimonials/testimonial4.png"); // Placeholder for avatar image
+    avatarImg.setAttribute("src", review.src); // Placeholder for avatar image
     avatarImg.setAttribute("alt", `Avatar ${review.name}`);
     avatarContainer.appendChild(avatarImg);
 
@@ -710,14 +786,51 @@ function displayReviews(reviews) {
     // Append row container to review item
     reviewItem.appendChild(rowContainer);
 
-    // reviewsContainer.appendChild(reviewItem);
-    reviewsContainer.insertAdjacentElement("beforeend", reviewItem);
+    // Append review item to testimonials container
+    testimonialsContainer.appendChild(reviewItem);
   });
 }
 
-// displaying the reviews only when clicking on "show-more-reviews"
+// fetch all the reviews and initialize the display
+
+async function fetchReviews() {
+  try {
+    const res = await fetch("data/reviews.json");
+    if (!res.ok) {
+      throw new Error("Could not load reviews");
+    }
+
+    const data = await res.json();
+    allReviews = data;
+
+    // Displaying only the first 3 reviews initially
+    displayReviews(allReviews.slice(0, initialDisplayCount));
+  } catch (error) {
+    console.error("There was a problem during the fetch operation", error);
+  }
+}
+
+// Toggle function for the button
+function toggleReviews() {
+  const spanText = showMoreReviews.querySelector(".show-more-reviews-text");
+
+  if (!isShowingAll) {
+    // show all reviews
+    displayReviews(allReviews.slice(initialDisplayCount));
+    spanText.textContent = "Vezi mai putin";
+    isShowingAll = true;
+  } else {
+    // revert to showing only the initial 3 reviews
+    clearReviews();
+    displayReviews(allReviews.slice(0, initialDisplayCount));
+    spanText.textContent = "Vezi mai multe recenzii Google";
+    isShowingAll = false;
+  }
+}
 
 showMoreReviews.addEventListener("click", function (e) {
   e.preventDefault();
-  fetchReviews();
+  toggleReviews();
 });
+
+fetchReviews();

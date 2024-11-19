@@ -23,7 +23,7 @@ latitude: 45.4418505
 longitude: 28.0186163
 
 To do creat la 01.11.2024 (dupa discutia din magazin):
-1. Informare pachet gazduire Hosterion
+1. Informare pachet gazduire Hosterion (done)
 2. Creare logo Edion Trans + favicon + update pe toate paginile (done)
 3. De creat butoanele "WhatsApp" + "Messenger" + "Formular" (done)
     3.1 "WhatsApp" --> "Scrie-ne pe WhatsApp" && "Messenger" --> "Scrie-ne pe Facebook" && "Formular" --> "Programeaza-te Online" (done)
@@ -37,6 +37,12 @@ To do creat la 01.11.2024 (dupa discutia din magazin):
     4.6 France-Germany form --> create an "Info" section at the top --> "Pentru finalizarea programarii, va rugam apasati butonul "Trimite" (send icon) in aplicatia de WhatsApp" (done)
     4.7 make "form-info-attention-paragraph" look good on mobiles (done)
 5. De creat o pagina de Intrebari Frecvente (accordion) (done)
+    5.1 make the text for each question bigger (done)
+    5.2 make sure that the accordion with the questions looks good on all screens (done)
+    5.3 grab the questions from a json file with a fetch function (done)
+    5.4 think of some other content to place on the faq page
+        5.4.1 create a section with "Nu ai gasit intrebarea ta in lista noastra de Intrebari Frecvente? Foloseste metoda de contact preferata de mai jos: "
+    5.5 replace the "+" & "-" with some fontawesome icons
 6. De scos "transport local persoane" de la servicii (done)
 7. De schimbat numarul de la WhatsApp cu 0758 490 201 (done)
 8. De adaugat ca serviciu "Bilete de avion" (done)
@@ -44,6 +50,8 @@ To do creat la 01.11.2024 (dupa discutia din magazin):
 10. De centrat paragraful din "hero" (done)
 11. Informare ANPC + Sol Online Lit - de ce este inclusa asta pe site-uri?
 12. De re-creat footer-ul + ANPC + Solutionarea Online a Litigiilor
+    12.1 make sure the footer is replaced on all pages (done)
+    12.2 think of something to replace SOL with
 13. Informare chat live
 14. Make the logo text inline on the phone (done)
 15. Remove the effect of the side buttons on the phone (done)
@@ -54,8 +62,8 @@ To do creat la 01.11.2024 (dupa discutia din magazin):
     18.1 .desc has to stay in 1 line (done)
     18.2 use a strong tag for the name of the users (done)
     18.3 create the stars for "review google" (done)
-    18.4 at the bottom, create 2 buttons: "Vezi mai multe recenzii" (which should display all the reviews - maybe from a json file) and "Lasa/Fa o recenzie"
-    18.5 re-think thi whole "testimonials" section - maybe display everything in here with just JS
+    18.4 at the bottom, create 2 buttons: "Vezi mai multe recenzii" (which should display all the reviews - maybe from a json file) and "Lasa/Fa o recenzie" (done)
+    18.5 re-think thi whole "testimonials" section - maybe display everything in here with just JS (done)
 
 
 
@@ -78,21 +86,34 @@ Initial Display
 -nume
 -numar de telefon
 -punct de plecare (select)
--punct de sosire
+-punct de sosire (select)
 -data plecarii
 
 2. Formular Franta-Germania (se finalizeaza pe WhatsApp)
 - nume
 - numar de telefon
 - punct de plecare (select)
+- punct de sosire (select)
 - data plecarii
 
 Website pages: 
-1. index (done) (done)
-2. about (done) (done)
-3. services (done) (done)
-4. contact (done) (done)
-5. faq (done) (done)
+1. index (done) (done) (footer)
+2. about (done) (done) (footer)
+3. services (done) (done) (footer)
+4. contact (done) (done) (done)
+5. faq (done) (done) (done)
+
+Formular: 
+
+1. Trimite un colet --> un formular in care cerem nume, nr de telfon, dimensiunea coletului
+2. Transport persoane --> Alege intre: "Traseu Italia" si "Traseu Franta-Germania"
+3. Pune o intrebare
+
+Phone numbers: 
+
+1. 0040745450393
+2. 0040741580359 (Sofer Edi)
+3. 0040723688329 (Sofer Sandu)
 
 
 

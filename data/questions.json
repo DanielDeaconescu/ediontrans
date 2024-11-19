@@ -1,0 +1,52 @@
+[
+  {
+    "question": "Care sunt destinațiile către care oferim transport?",
+    "answer": "Oferim transport către diferite destinații în Europa, inclusiv Italia și alte destinații solicitate de clienții noștri.",
+    "q_id": "940"
+  },
+  {
+    "question": "Cum pot face o rezervare pentru un transport?",
+    "answer": "Pentru a face o rezervare, puteți folosi formularul de contact de pe pagina noastră. După completarea formularului, veți fi redirecționat către o pagină de confirmare care conține toate informațiile de care aveți nevoie, inclusiv punctul de îmbarcare.",
+    "q_id": "819"
+  },
+  {
+    "question": "Vă pot contacta telefonic?",
+    "answer": "Da, ne puteți contacta la numerele de telefon listate în secțiunea Contact a site-ului nostru. De asemenea, oferim opțiunea de a ne trimite mesaje pe WhatsApp și Skype pentru întrebări rapide și asistență suplimentară.",
+    "q_id": "210"
+  },
+  {
+    "question": "Unde pot vedea locația de îmbarcare?",
+    "answer": "După completarea formularului de rezervare pentru transportul către Italia, veți avea acces la o imagine și la o hartă Google care arată punctul exact de îmbarcare. Aceste informații sunt disponibile pe pagina de confirmare.",
+    "q_id": "760"
+  },
+  {
+    "question": "Pot trimite un colet sau bagaj prin EdionTrans?",
+    "answer": "Da, EdionTrans oferă și servicii de transport pentru colete. Pentru a afla mai multe detalii despre costuri și programare, vă rugăm să ne contactați direct.",
+    "q_id": "309"
+  },
+  {
+    "question": "Ce metode de plată sunt acceptate?",
+    "answer": "În prezent, acceptăm plata numerar la îmbarcare. Dacă aveți nevoie de opțiuni alternative de plată, contactați-ne în prealabil pentru a verifica disponibilitatea acestora.",
+    "q_id": "701"
+  },
+  {
+    "question": "Cum pot anula sau modifica o rezervare?",
+    "answer": "Pentru a anula sau modifica o rezervare, vă rugăm să ne contactați telefonic sau prin WhatsApp cu cel puțin 24 de ore înainte de ora programată a plecării. Vom face tot posibilul să găsim cea mai bună soluție pentru dumneavoastră.",
+    "q_id": "258"
+  },
+  {
+    "question": "De ce informații am nevoie înainte de a face o rezervare?",
+    "answer": "Pentru a face o rezervare rapidă și eficientă, vă rugăm să aveți la îndemână informațiile de bază despre călătoria dumneavoastră, cum ar fi: data și ora dorită pentru plecare, numărul de pasageri și orice bagaj suplimentar pe care doriți să-l transportați.",
+    "q_id": "714"
+  },
+  {
+    "question": "Cum pot afla mai multe despre locațiile și orarele de plecare?",
+    "answer": "Ne puteți contacta telefonic sau prin intermediul formularului de contact pentru detalii suplimentare despre locațiile de plecare, orare și alte informații legate de călătoriile oferite.",
+    "q_id": "889"
+  },
+  {
+    "question": "Este disponibil un serviciu de suport live?",
+    "answer": "Oferim suport prin intermediul chat-ului WhatsApp și Skype, astfel încât să puteți primi ajutor rapid și răspunsuri la întrebările dumneavoastră. Dacă aveți o întrebare specifică, ne puteți contacta în orice moment.",
+    "q_id": "779"
+  }
+]
