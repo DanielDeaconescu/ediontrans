@@ -581,9 +581,14 @@ actualFormFrDe.addEventListener("submit", function (e) {
           </div>
         </div> */
 }
+
+
 const accordionContainer = document.querySelector(".accordion");
 
-accordionContainer.innerHTML = "";
+
+  if(accordionContainer) {
+    accordionContainer.innerHTML = "";
+  }
 
 function createQuestionItem(questions) {
   questions.forEach((question, index) => {
@@ -623,7 +628,11 @@ function createQuestionItem(questions) {
     div.appendChild(link);
     div.appendChild(answerDiv);
 
-    accordionContainer.appendChild(div);
+    // making the accordionContainer empty in the beginning (but only if it exists)
+    
+      
+      accordionContainer.appendChild(div);
+    
   });
 }
 
@@ -636,8 +645,6 @@ async function fetchQuestions() {
       .then((data) => {
         allQuestions = data;
         createQuestionItem(allQuestions);
-        console.log(allQuestions);
-        return data;
       });
     return result;
   } catch (error) {
@@ -679,9 +686,9 @@ setTimeout(function () {
         : "+";
     })
   );
-}, 100);
+}, 200);
 
-faqFunctionality();
+// faqFunctionality();
 
 // window.initMap = initMap;
 
@@ -828,9 +835,16 @@ function toggleReviews() {
   }
 }
 
-showMoreReviews.addEventListener("click", function (e) {
-  e.preventDefault();
-  toggleReviews();
-});
+if(showMoreReviews) {
+  showMoreReviews.addEventListener("click", function (e) {
+    e.preventDefault();
+    toggleReviews();
+  });
+  
+  fetchReviews();
+}
 
-fetchReviews();
+
+
+
+

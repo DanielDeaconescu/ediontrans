@@ -41,7 +41,8 @@ To do creat la 01.11.2024 (dupa discutia din magazin):
     5.2 make sure that the accordion with the questions looks good on all screens (done)
     5.3 grab the questions from a json file with a fetch function (done)
     5.4 think of some other content to place on the faq page
-        5.4.1 create a section with "Nu ai gasit intrebarea ta in lista noastra de Intrebari Frecvente? Foloseste metoda de contact preferata de mai jos: "
+        5.4.1 create a section with "Nu ai gasit intrebarea ta in lista noastra de Intrebari Frecvente? 
+        Foloseste metoda de contact preferata de mai jos: "
     5.5 replace the "+" & "-" with some fontawesome icons
 6. De scos "transport local persoane" de la servicii (done)
 7. De schimbat numarul de la WhatsApp cu 0758 490 201 (done)
